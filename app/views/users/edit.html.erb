@@ -13,21 +13,13 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>User info</h2>
     <%= form_with model:@user, local:true do |f| %>
-      <diV class="form-group">
-        <label for="user_name">Name</label>
-        <input class="form-control name" type="text" name="user[name]" id="user_name">
-      </diV>
-      <div class="form-group">
-        <label for="user_image">Image</label>
-        <input class="form-control-file user_image" include_hidden="false" type="file" name="user[profile_image]" id="user_profile_image">
-      </div>
-      <div class="form-group">
-        <label for="user_introduction">Introduction</label>
-        <textarea class="form-control introduction" name="user[introduction]" id="user_introduction"></textarea>
-      </div>
-      <div class="form-group">
-        <%= f.
-      </div>
+        <h4>Name</h4>
+        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+        <h4>image</h4>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+        <h4>introduction</h4>
+        <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"自己紹介"%>
+        <%= f.submit "Update User" %>
     <% end %>
     </div>
   </div>

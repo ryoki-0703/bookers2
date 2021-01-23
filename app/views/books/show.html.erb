@@ -11,13 +11,17 @@
           <tbody>
             <tr>
               <td>
-                <%= attachment_image_tag @user, :profile_image, :fill, size: "30x30", format: "jpeg", fallback: "no_image.jpeg" %>
-                <%= link_to user_path(@book.user.id) do  %><% @book.user.name %><% end %>
+                <%= link_to user_path(@user.id) do  %>
+                  <%= attachment_image_tag @user, :profile_image, :fill, size: "30x30", format: "jpeg", fallback: "no_image.jpeg" %>
+                  <%= @book.user.name %>
+                <% end %>
               </td>
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
+            <% if current_user.id == @user.id %>
               <td><%= link_to 'Edit', edit_book_path(@book.id) %></td>
               <td><%= link_to 'Destroy', book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+            <% end %>
             </tr>
           </tbody>
         </table>
