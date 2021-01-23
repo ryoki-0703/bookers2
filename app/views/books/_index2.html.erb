@@ -1,0 +1,6 @@
+<h1>Books</h1>
+<%= attachment_image_tag @user, :profile_image, :fill, size: "60x60", format: "jpeg", fallback: "no_image.jpeg" %>
+<% books.each do |book| %>
+  <p>Title</p>
+  <%= link_to book.title, book_path(book.id) %>
+<% end %>
