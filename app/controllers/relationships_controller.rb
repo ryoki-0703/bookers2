@@ -4,6 +4,7 @@ class RelationshipsController < ApplicationController
   def create
     following = current_user.follow(@user)
     if following.save!
+      NotificationMailer.complete_mail(@user).deliver_now
       redirect_back(fallback_location: root_path)
     else
       redirect_back(fallback_location: root_path)
